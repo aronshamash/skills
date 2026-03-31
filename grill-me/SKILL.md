@@ -1,6 +1,7 @@
 ---
 name: grill-me
 description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+disable-model-invocation: true
 ---
 
 # Grill Me
@@ -20,32 +21,20 @@ Interview the user relentlessly about every aspect of their plan until we reach 
 
 ## Workflow
 
-1. **Ask the user what plan or design to grill them on** (if not already provided in context)
-
-2. **Map the decision tree** — internally identify the major branches:
-   - Core architecture decisions
-   - Data model choices
-   - Integration points
-   - Failure modes and error handling
-   - Scalability and performance assumptions
-   - Observability and operability
-   - Security and access control
-   - Deployment and rollout strategy
-
-3. **Walk the tree depth-first** — start with the most foundational decision (the one most others depend on)
-
-4. **For each question**:
-   - State which branch of the decision tree you're on
-   - Ask the single most important unresolved question on that branch
-   - Provide your recommended answer with brief reasoning
-   - Wait for the user's response before proceeding
-
-5. **When a branch is resolved**: explicitly acknowledge it, then move to the next
-
-6. **Terminate** when all major branches are resolved and no open questions remain — summarize the agreed design as a concise decision log
+1. Identify the plan/design to analyze (ask if not provided)
+2. Map major decision branches internally (architecture, data model, integrations, failure modes, security, deployment)
+3. Walk depth-first from most foundational decision
+4. For each question: state branch, ask one question, provide recommended answer, wait
+5. Acknowledge resolved branches explicitly before moving on
+6. Terminate with concise decision log when complete
 
 ## Tone
 
-- Direct and challenging, not adversarial
-- No cheerleading or validation of weak answers
-- Treat the user as a senior engineer who can handle hard questions
+- Direct questions, no preamble
+- Push back on "probably" or "should be fine" - demand data/precedent
+- Senior engineer peer review, not consultant validation
+- Flag risks immediately, don't bury them
+
+## Examples
+
+See [examples/](examples/) for sample sessions.
